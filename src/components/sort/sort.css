@@ -1,0 +1,66 @@
+.sort__choose{
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  color: #fff;
+  /* text-align: center; */
+}
+
+.sort__choose::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 5.63px;
+  background-image: url('./../../img/Vector (15).svg');
+  
+
+
+
+}
+
+.pop__subt{
+  position: relative;
+  display: inline-block;
+  }
+  .pop__subt::before{
+    position: absolute;
+    z-index: 0;
+    display: block;
+    top: -23px;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+    content: '';
+    width: 136px;
+    height: 97px;
+    border-radius: 8px;
+    background-color: #1698D9;
+    
+    }
+    
+    li{
+  padding: 5px 0 0 6px;
+  position: relative;
+  z-index: 9;
+  color: #000;
+  
+}
+
+.active__pop{
+  position: relative;
+  display: inline-block;
+  }
+  .active__pop::before{
+  z-index: -1;
+  position: absolute;
+  display: block;
+  top: 1px;
+  left: 0;
+  right: 0;
+  content: '';
+  width: 136px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: #ABE2FE;
+  
+  }
