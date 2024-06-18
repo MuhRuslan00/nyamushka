@@ -1,9 +1,6 @@
 import './weight/weight.css';
 import React from 'react';
 import cardActive from '../img/Back.svg';
-import Sort from './sort/Sort';
-import imgChoose from '../img/Vector (15).svg';
-import {card} from '../helpers/Array';
 
 const Card = ({title, diskription, subTitle,backgroundImage, weight}) => {
   return (
@@ -11,7 +8,7 @@ const Card = ({title, diskription, subTitle,backgroundImage, weight}) => {
   <div className='cards__wrap'>
         
         <div style={{backgroundImage: `url(${backgroundImage})`}}  className='container__card'>
-        <img className='active' src={cardActive}/>
+        {/* <img className='active' src={cardActive}/> */}
           <div className='card__content'>
         <h3 className='title'>{title}</h3>
         <h2>Нямушка</h2>
@@ -35,7 +32,7 @@ const Card = ({title, diskription, subTitle,backgroundImage, weight}) => {
       <div className='link'> 
         <a >Чего сидишь? Порадуй котэ, 
           <span className='active__link'>купи.</span></a>
-          <Sort/>    
+           
 
     </div>
     </div> 

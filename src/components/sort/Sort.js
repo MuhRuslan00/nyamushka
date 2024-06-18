@@ -12,8 +12,8 @@ const Sort = () => {
   }
   return (
     <>
-    <span onClick={()=> setOpen(!open)}className='sort__choose'>{sortName}</span>
    <div>
+    <span onClick={()=> setOpen(!open)}className='sort__choose'>{sortName}</span>
    
    {open && (
       <ul className='pop__subt'>

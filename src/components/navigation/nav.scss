@@ -1,0 +1,48 @@
+.nav{
+  display: flex;
+  padding: 50px 0 50px;
+  
+&__list{
+  column-gap: 50px;
+display: flex;
+justify-content: space-between;
+
+li{
+  cursor: pointer;
+  width: 132px;
+  height: 50px;
+  font-size: 22px;
+  border-radius: 30px;
+  color: #000;
+  text-align: center;
+  background-color: #F9F9F9;
+  justify-content:center;
+  display: flex;
+
+  &:hover{
+    background-color: #2EA8E6;
+    }
+
+    // &:active{
+    //   background-color: #3d3d3d;
+    //   }
+      }
+
+      .active {
+        background-color: #282828;
+        color: #fff;
+      }
+    }
+    }
+
+
+
+
+
+    
+    
+      
+
+
+    
+  

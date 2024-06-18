@@ -1,0 +1,127 @@
+.wrap {
+  padding: 40px 0;
+}
+.wrap .container__cart {
+  max-width: 1100px;
+  margin: 90px auto;
+}
+.wrap .container__cart .cart__mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 18px;
+       column-gap: 18px;
+}
+.wrap .container__cart .cart__mini .cart__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 18px;
+       column-gap: 18px;
+  padding-bottom: 30px;
+}
+.wrap .container__cart .cart__mini .cart__top .title {
+  font-size: 32px;
+  color: #fff;
+  position: relative;
+}
+.wrap .container__cart .cart__mini .cart__top .title::before {
+  content: "";
+  padding-left: 17px;
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  background-color: rgb(23, 227, 105);
+  width: 29px;
+  height: 29px;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.wrap .container__cart .cart__mini span {
+  color: #fff;
+  font-size: 16px;
+}
+.wrap .container__cart .cart__diskription {
+  display: flex;
+  -moz-column-gap: 60px;
+       column-gap: 60px;
+  justify-content: space-between;
+}
+.wrap .container__cart .cart__diskription .diskription__title {
+  display: flex;
+  align-items: center;
+}
+.wrap .container__cart .cart__diskription .diskription__title .cat__img {
+  width: 160px;
+  height: 150px;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+.wrap .container__cart .cart__diskription .diskription__title h2 {
+  font-size: 22px;
+  color: #fff;
+  padding-bottom: 14px;
+}
+.wrap .container__cart .cart__diskription .diskription__title p {
+  font-size: 18px;
+  color: #dedede;
+}
+.wrap .container__cart .cart__diskription .item__count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 22px;
+  padding: 68px;
+}
+.wrap .container__cart .cart__diskription .item__count .round {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #2EA8E6;
+  border-radius: 50%;
+}
+.wrap .container__cart .cart__diskription .item__count span {
+  padding: 15px;
+}
+.wrap .container__cart .cart__diskription .item__price {
+  display: flex;
+  font-size: 22px;
+  color: #fff;
+  align-items: center;
+}
+.wrap .container__cart .cart__diskription .button__close {
+  display: flex;
+  align-items: center;
+}
+.wrap .container__cart .cart__diskription .button__close .round {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b0a19b;
+  border-radius: 50%;
+  color: #b0a19b;
+}
+.wrap .container__cart .cart__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 60px;
+  color: #fff;
+  font-size: 22px;
+}
+.wrap .container__cart .footer__summ {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 60px;
+  font-size: 16px;
+}
+.wrap .container__cart .footer__summ button {
+  color: #fff;
+  width: 211px;
+  height: 55px;
+  border-radius: 30px;
+  border: 1px solid #b0a19b;
+  text-align: center;
+  cursor: pointer;
+}/*# sourceMappingURL=bascket.module.css.map */
