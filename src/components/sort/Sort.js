@@ -1,29 +1,36 @@
 import React from 'react';
 import './sort.css';
-const Sort = () => {
+const Sort = ({sortType, onChangeSort}) => {
   const [open, setOpen] = React.useState(false);
-  const list = ['с фуагра', 'с рыбой', 'с курой']
-  const [selected, setSelected] = React.useState(0);
-  const sortName = list[selected];
+  const list = [
+    {name: 'порций(DESC)', sort:'diskription'},
+    {name: 'порций(ASC)', sort:'-diskription'},
+    {name: 'вес(DESC)', sort:'weight'},
+    {name: 'вес(ASC)', sort:'-weight'},
+    {name: 'с чем(DESC)', sort:'subTitle'},
+    {name: 'с чем(ASC)', sort:'-subTitle'},
+  ]
+  
+  // const sortName = list[sortType].name;
   
   const onClickListItem = (i) => {
-    setSelected(i);
+    onChangeSort(i);
     setOpen(false);
   }
   return (
     <>
    <div>
-    <span onClick={()=> setOpen(!open)}className='sort__choose'>{sortName}</span>
+    <span onClick={()=> setOpen(!open)}className='sort__choose'>{sortType.name}</span>
    
    {open && (
       <ul className='pop__subt'>
    
-    {list.map((name, i) => (
+    {list.map((obj, i) => (
       <li
       key={i}
-      onClick={()=> onClickListItem(i)}
-      className={selected === i ? 'active__pop' : ''}>
-        {name}
+      onClick={()=> onClickListItem(obj)}
+      className={sortType.sort === obj.sort ? 'active__pop' : ''}>
+        {obj.name}
       </li>
     ))
    }
