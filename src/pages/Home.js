@@ -29,9 +29,10 @@ const Home = ({searchValue}) => {
 
     const order = sortType.sort.includes('-') ? 'asc' : 'desc';
     const sortBy = sortType.sort.replace('-','');
+    const search = searchValue ? `&search=${searchValue}`: '';
     
     fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?${categoryNav > 0 ? `category=${categoryNav}`: ''
-    }&sortBy=${sortBy}&order=${order}`, 
+    }&sortBy=${sortBy}&order=${order}${search}`, 
   ) 
   .then((res) => res.json())
   .then((arr) => {
@@ -39,16 +40,10 @@ const Home = ({searchValue}) => {
     setIsLoading(false);
   });
   window.scrollTo(0, 0);
-}, [categoryNav, sortType]);
+}, [categoryNav, sortType, searchValue]);
 // console.log(categoryNav, sortType)
-  const usersArr = users.filter(obj => {
-    if (obj.title.toLowerCase().includes(searchValue.toLowerCase)){
 
-    return true;
-    }
-    return false;
-  })
-  .map((obj)=> <Card
+  const usersArr = users.map((obj)=> <Card
   key={obj.id} {...obj} backgroundImage={backgroundImage}
   />) 
     
