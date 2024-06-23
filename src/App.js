@@ -9,6 +9,8 @@ import NotFound from './pages/notfound/NotFound';
 
 
 function App() {
+  const [searchValue, setSearchValue] = React.useState('');
+  console.log(searchValue, 'inputchange');
   
 
   return (
@@ -16,7 +18,7 @@ function App() {
     <section style={{backgroundImage: `url(${background})`}} className="content">
       <div className="container">
 
-      <Header/>
+      <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
        <h1>Ты сегодня покормил кота?</h1>
       <Routes>
         <Route path='/' element={<Home/>} />
