@@ -26,8 +26,12 @@ const Home = () => {
 
   React.useEffect(()=> {
     setIsLoading(true);
-    fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?${categoryNav > 0 ? `weight=${categoryNav}`: ''
-    }&sortBy=${sortType.sort}&order=desc`, 
+
+    const order = sortType.sort.includes('-') ? 'asc' : 'desc';
+    const sortBy = sortType.sort.replace('-','');
+
+    fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?${categoryNav > 0 ? `category=${categoryNav}`: ''
+    }&sortBy=${sortBy}&order=${order}`, 
     ) 
     .then((res) => res.json())
     .then((arr) => {
@@ -47,7 +51,7 @@ const Home = () => {
     <Sort sortType={sortType} onChangeSort={(i) => setSortType(i)}/>
 
     </div>
-    <NotFound/>
+    
     <div className='cards__content'>
     { isLoading
     ? [...new Array(3)].map((_, index) =><Sceleton key={index}/>) : users.map((obj)=> <Card

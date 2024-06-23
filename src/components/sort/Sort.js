@@ -21,7 +21,7 @@ const Sort = ({sortType, onChangeSort}) => {
     <>
    <div>
     <span onClick={()=> setOpen(!open)}className='sort__choose'>{sortType.name}</span>
-   
+   {/* pop up открытие попап */}
    {open && (
       <ul className='pop__subt'>
    

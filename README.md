@@ -84,3 +84,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     // } -->
 
     создать счетчик с пом use state  - https://www.youtube.com/watch?v=EXRqsxBNDzE&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=4  
+
+sort in mockapi
+    https://665a0cf9de346625136ee5a1.mockapi.io/users
+    ?sortBy=category&order=asc
+    
+sort in mockapi несколько фильтров
+    https://665a0cf9de346625136ee5a1.mockapi.io/users
+    ?sortBy=category&order=asc& search=Пеперони

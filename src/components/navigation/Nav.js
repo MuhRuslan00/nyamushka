@@ -3,7 +3,7 @@ import './nav.scss';
 
 const Nav = ({categoryNav, onClickCategory}) => {
   // console.log(categoryNav) 
-  const navs = ['Все', 'с фуагра', 'с рыбой', 'с курой']
+  const navs = ['Все', '10', '40', '200']
 
 
   return (
