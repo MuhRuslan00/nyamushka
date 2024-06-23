@@ -21,7 +21,7 @@ function App() {
       <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
        <h1>Ты сегодня покормил кота?</h1>
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Home searchValue={searchValue}/>} />
         <Route path='/bascket' element={<Bascket/>} />
         <Route path='/notFound' element={<NotFound/>} />
 

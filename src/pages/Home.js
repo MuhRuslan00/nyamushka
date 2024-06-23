@@ -12,7 +12,7 @@ import Portion from '../components/portion/Portion';
 
 
 
-const Home = () => {
+const Home = ({searchValue}) => {
   const[users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -29,18 +29,28 @@ const Home = () => {
 
     const order = sortType.sort.includes('-') ? 'asc' : 'desc';
     const sortBy = sortType.sort.replace('-','');
-
+    
     fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?${categoryNav > 0 ? `category=${categoryNav}`: ''
     }&sortBy=${sortBy}&order=${order}`, 
-    ) 
-    .then((res) => res.json())
-    .then((arr) => {
-      setUsers(arr);
-      setIsLoading(false);
-    });
-    window.scrollTo(0, 0);
-  }, [categoryNav, sortType]);
-  // console.log(categoryNav, sortType)
+  ) 
+  .then((res) => res.json())
+  .then((arr) => {
+    setUsers(arr);
+    setIsLoading(false);
+  });
+  window.scrollTo(0, 0);
+}, [categoryNav, sortType]);
+// console.log(categoryNav, sortType)
+  const usersArr = users.filter(obj => {
+    if (obj.title.toLowerCase().includes(searchValue.toLowerCase)){
+
+    return true;
+    }
+    return false;
+  })
+  .map((obj)=> <Card
+  key={obj.id} {...obj} backgroundImage={backgroundImage}
+  />) 
     
   return (
     <>
@@ -54,10 +64,7 @@ const Home = () => {
     
     <div className='cards__content'>
     { isLoading
-    ? [...new Array(3)].map((_, index) =><Sceleton key={index}/>) : users.map((obj)=> <Card
-    key={obj.id} {...obj} backgroundImage={backgroundImage}
-    
-    />)}
+    ? [...new Array(3)].map((_, index) =><Sceleton key={index}/>) : usersArr}
 
       
     </div>
