@@ -1,0 +1,22 @@
+.root {
+  padding: 20px;
+}
+.root li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 10px;
+  background-color: rgb(187, 204, 204);
+  height: 30px;
+  font-size: 16px;
+  width: 30px;
+}
+.root li:global.selected {
+  background-color: aqua;
+  color: #666;
+}
+.root a {
+  cursor: pointer;
+}/*# sourceMappingURL=Pagination.module.css.map */
