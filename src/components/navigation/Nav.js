@@ -1,7 +1,7 @@
 import React from 'react';
 import './nav.scss';
 
-const Nav = ({categoryNav, onClickCategory}) => {
+const Nav = ({categoryNav, onChangeCategory}) => {
   // console.log(categoryNav) 
   const navs = ['Все', '10', '40', '200']
 
@@ -10,7 +10,7 @@ const Nav = ({categoryNav, onClickCategory}) => {
       <div className='nav'>
         <ul className='nav__list'>
           {
-           navs.map((categoryName, i) => (<li key={i} onClick={() => onClickCategory(i)} className={categoryNav === i ? 'active' : ''}>{categoryName}</li>)) 
+           navs.map((categoryName, i) => (<li key={i} onClick={() => onChangeCategory(i)} className={categoryNav === i ? 'active' : ''}>{categoryName}</li>)) 
           }
         </ul>
       </div>

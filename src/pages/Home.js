@@ -1,6 +1,9 @@
 import React from 'react';
 import Card from '../components/Card';
 // import {card} from '../helpers/Array';
+import {useDispatch, useSelector} from 'react-redux';
+import {setCategoryId} from '../redux/slices/filterSlice';
+
 
 import backgroundImage from '../img/BackB.svg';
 import Sceleton from '../components/Sceleton';
@@ -11,21 +14,34 @@ import Portion from '../components/portion/Portion';
 import Pagination from '../components/pagination/Pagination';
 
 
-
 const Home = ({searchValue}) => {
+  const dispatch = useDispatch();
+  console.log(dispatch, 'App dispatch')
+
+const categoryId = useSelector((state) => state.filter.categoryId);
+console.log('redux state', categoryId)
+
+
+
+const setCategoryNav = () => {};
+
+
+
+
   const[users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   const[currentPage, setCurrentPage] = React.useState(1)
 
-
-   const[categoryNav, setCategoryNav] = React.useState(0);
   const [sortType, setSortType] = React.useState({
     name: 'вес', 
      sort:'weight'
 
   });
-  // console.log(categoryNav, sortType)
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  }
+  
 
   React.useEffect(()=> {
     setIsLoading(true);
@@ -34,7 +50,7 @@ const Home = ({searchValue}) => {
     const sortBy = sortType.sort.replace('-','');
     const search = searchValue ? `&search=${searchValue}`: '';
     
-    fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?page=${currentPage}&limit=3&${categoryNav > 0 ? `category=${categoryNav}`: ''
+    fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?page=${currentPage}&limit=3&${categoryId > 0 ? `category=${categoryId}`: ''
     }&sortBy=${sortBy}&order=${order}${search}`, 
   ) 
   .then((res) => res.json())
@@ -43,7 +59,7 @@ const Home = ({searchValue}) => {
     setIsLoading(false);
   });
   window.scrollTo(0, 0);
-}, [categoryNav, sortType, searchValue, currentPage]);
+}, [categoryId, sortType, searchValue, currentPage]);
 // console.log(categoryNav, sortType)
 
   const usersArr = users.map((obj)=> <Card
@@ -55,7 +71,7 @@ const Home = ({searchValue}) => {
     <div className='home__wrap'>
 
 
-    <Nav categoryNav={categoryNav} onClickCategory={(i) => setCategoryNav(i)}/>
+    <Nav categoryNav={categoryId} onChangeCategory={onChangeCategory}/>
     <Sort sortType={sortType} onChangeSort={(i) => setSortType(i)}/>
 
     </div>

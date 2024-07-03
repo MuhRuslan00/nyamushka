@@ -7,14 +7,13 @@ import Home from './pages/Home';
 import Bascket from './pages/bascket/Bascket';
 import NotFound from './pages/notfound/NotFound';
 
-
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
-  console.log(searchValue, 'inputchange');
+  
   
 
   return (
-   
+
     <section style={{backgroundImage: `url(${background})`}} className="content">
       <div className="container">
 
