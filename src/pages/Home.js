@@ -16,14 +16,14 @@ import Pagination from '../components/pagination/Pagination';
 
 const Home = ({searchValue}) => {
   const dispatch = useDispatch();
-  console.log(dispatch, 'App dispatch')
-
-const categoryId = useSelector((state) => state.filter.categoryId);
+  
+const {categoryId, sort} = useSelector((state) => state.filter);
+// const sortType = sort.sortProperty;
 console.log('redux state', categoryId)
 
 
 
-const setCategoryNav = () => {};
+// const setCategoryNav = () => {};
 
 
 
@@ -33,11 +33,7 @@ const setCategoryNav = () => {};
 
   const[currentPage, setCurrentPage] = React.useState(1)
 
-  const [sortType, setSortType] = React.useState({
-    name: 'вес', 
-     sort:'weight'
 
-  });
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
   }
@@ -46,8 +42,8 @@ const setCategoryNav = () => {};
   React.useEffect(()=> {
     setIsLoading(true);
 
-    const order = sortType.sort.includes('-') ? 'asc' : 'desc';
-    const sortBy = sortType.sort.replace('-','');
+    const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+    const sortBy = sort.sortProperty.replace('-','');
     const search = searchValue ? `&search=${searchValue}`: '';
     
     fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?page=${currentPage}&limit=3&${categoryId > 0 ? `category=${categoryId}`: ''
@@ -59,7 +55,7 @@ const setCategoryNav = () => {};
     setIsLoading(false);
   });
   window.scrollTo(0, 0);
-}, [categoryId, sortType, searchValue, currentPage]);
+}, [categoryId, sort.sortProperty, searchValue, currentPage]);
 // console.log(categoryNav, sortType)
 
   const usersArr = users.map((obj)=> <Card
@@ -72,7 +68,7 @@ const setCategoryNav = () => {};
 
 
     <Nav categoryNav={categoryId} onChangeCategory={onChangeCategory}/>
-    <Sort sortType={sortType} onChangeSort={(i) => setSortType(i)}/>
+    <Sort/>
 
     </div>
     
