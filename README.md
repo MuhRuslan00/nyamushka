@@ -92,3 +92,5 @@ sort in mockapi
 sort in mockapi несколько фильтров
     https://665a0cf9de346625136ee5a1.mockapi.io/users
     ?sortBy=category&order=asc& search=Пеперони
+
+    https://lodash.com/ 

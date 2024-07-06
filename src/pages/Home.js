@@ -4,6 +4,8 @@ import Card from '../components/Card';
 import {useDispatch, useSelector} from 'react-redux';
 import {setCategoryId} from '../redux/slices/filterSlice';
 
+import axios from 'axios';
+
 
 import backgroundImage from '../img/BackB.svg';
 import Sceleton from '../components/Sceleton';
@@ -19,14 +21,9 @@ const Home = ({searchValue}) => {
   
 const {categoryId, sort} = useSelector((state) => state.filter);
 // const sortType = sort.sortProperty;
-console.log('redux state', categoryId)
-
 
 
 // const setCategoryNav = () => {};
-
-
-
 
   const[users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -45,15 +42,15 @@ console.log('redux state', categoryId)
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
     const sortBy = sort.sortProperty.replace('-','');
     const search = searchValue ? `&search=${searchValue}`: '';
-    
-    fetch(`https://665a0cf9de346625136ee5a1.mockapi.io/users?page=${currentPage}&limit=3&${categoryId > 0 ? `category=${categoryId}`: ''
-    }&sortBy=${sortBy}&order=${order}${search}`, 
-  ) 
-  .then((res) => res.json())
-  .then((arr) => {
-    setUsers(arr);
+ 
+  axios.get(`https://665a0cf9de346625136ee5a1.mockapi.io/users?page=${currentPage}&limit=3&${categoryId > 0 ? `category=${categoryId}`: ''}&sortBy=${sortBy}&order=${order}${search}`)
+  .then((res) => {
+    console.log(res)
+    setUsers(res.data);
     setIsLoading(false);
+    
   });
+
   window.scrollTo(0, 0);
 }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 // console.log(categoryNav, sortType)
