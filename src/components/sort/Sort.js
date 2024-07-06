@@ -3,20 +3,21 @@ import './sort.css';
 import {useSelector, useDispatch} from 'react-redux'
 import {setSort} from './../../redux/slices/filterSlice';
 
+export const list = [
+  {name: 'порций(DESC)', sortProperty:'diskription'},
+  {name: 'порций(ASC)', sortProperty:'-diskription'},
+  {name: 'вес(DESC)', sortProperty:'weight'},
+  {name: 'вес(ASC)', sortProperty:'-weight'},
+  {name: 'с чем(DESC)', sortProperty:'subTitle'},
+  {name: 'с чем(ASC)', sortProperty:'-subTitle'},
+]
 
 const Sort = () => {
 const dispatch = useDispatch();
 const sort = useSelector(state => state.filter.sort)
 
-  const [open, setOpen] = React.useState(false);
-  const list = [
-    {name: 'порций(DESC)', sortProperty:'diskription'},
-    {name: 'порций(ASC)', sortProperty:'-diskription'},
-    {name: 'вес(DESC)', sortProperty:'weight'},
-    {name: 'вес(ASC)', sortProperty:'-weight'},
-    {name: 'с чем(DESC)', sortProperty:'subTitle'},
-    {name: 'с чем(ASC)', sortProperty:'-subTitle'},
-  ]
+ const [open, setOpen] = React.useState(false);
+ 
   
   // const sortName = list[sortType].name;
   
@@ -50,4 +51,5 @@ const sort = useSelector(state => state.filter.sort)
 } 
 
  
+
 export default Sort;
