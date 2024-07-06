@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../components/Card';
 // import {card} from '../helpers/Array';
 import {useDispatch, useSelector} from 'react-redux';
-import {setCategoryId} from '../redux/slices/filterSlice';
+import {setCategoryId, setCurrentPage} from '../redux/slices/filterSlice';
 
 import axios from 'axios';
 
@@ -19,7 +19,7 @@ import Pagination from '../components/pagination/Pagination';
 const Home = ({searchValue}) => {
   const dispatch = useDispatch();
   
-const {categoryId, sort} = useSelector((state) => state.filter);
+const {categoryId, sort, currentPage} = useSelector((state) => state.filter);
 // const sortType = sort.sortProperty;
 
 
@@ -28,11 +28,15 @@ const {categoryId, sort} = useSelector((state) => state.filter);
   const[users, setUsers] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
-  const[currentPage, setCurrentPage] = React.useState(1)
+  // const[currentPage, setCurrentPage] = React.useState(1)
 
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
+  }
+
+  const onChangePage = number => {
+    dispatch(setCurrentPage(number))
   }
   
 
@@ -85,7 +89,7 @@ const {categoryId, sort} = useSelector((state) => state.filter);
 
       }
       </div> 
-      <Pagination onChangePage={number => setCurrentPage(number)}/>
+      <Pagination currentPage={currentPage} onChangePage={onChangePage}/>
       
     </>
       
