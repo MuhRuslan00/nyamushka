@@ -4,7 +4,8 @@ import './nav.scss';
 const Nav = ({categoryNav, onChangeCategory}) => {
   // console.log(categoryNav) 
   const navs = ['Все', '10', '40', '200']
-
+  
+  
 
   return (
       <div className='nav'>

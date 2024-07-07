@@ -2,7 +2,6 @@ import React from 'react';
 import './sort.css';
 import {useSelector, useDispatch} from 'react-redux'
 import {setSort} from './../../redux/slices/filterSlice';
-
 export const list = [
   {name: 'порций(DESC)', sortProperty:'diskription'},
   {name: 'порций(ASC)', sortProperty:'-diskription'},
@@ -16,6 +15,9 @@ const Sort = () => {
 const dispatch = useDispatch();
 const sort = useSelector(state => state.filter.sort)
 
+const sortRef = React.useRef(null);
+
+
  const [open, setOpen] = React.useState(false);
  
   
@@ -25,16 +27,35 @@ const sort = useSelector(state => state.filter.sort)
     dispatch(setSort(obj))
     setOpen(false);
   }
+  // console.log(sortRef)
+React.useEffect(() =>{
+      if(!open) return;
+
+      const handleClick = e => {
+        if (!sortRef.current) return;
+        if (!sortRef.current.contains(e.target)){
+          setOpen(false);
+          console.log('click outside')
+        }
+      }
+  document.addEventListener('click', handleClick)
+  return () => {
+    document.removeEventListener('click', handleClick)
+  }
+ 
+  
+}, [open, setOpen]);
+ 
   return (
     <>
-   <div>
-    <span onClick={()=> setOpen(!open)}className='sort__choose'>{sort.name}</span>
+   <div ref={sortRef} className='sorrt'>
+    <span  onClick={()=> setOpen(!open)}className='sort__choose'>{sort.name}</span>
    {/* pop up открытие попап */}
    {open && (
       <ul className='pop__subt'>
    
     {list.map((obj, i) => (
-      <li
+      <li 
       key={i}
       onClick={()=> onClickListItem(obj)}
       className={sort.sortProperty === obj.sortProperty ? 'active__pop' : ''}>
